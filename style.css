@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+:root {
+  --bg: #ffc300;
+  --card-bg: #1a1a24;
+  --primary: #FF007A;
+  --secondary: #7928CA;
+  --text: #ffffff;
+  --muted: #8b8b9e;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+  font-family: 'Outfit', sans-serif;
+}
+
+.card {
+  width: 320px;
+  background-color: var(--card-bg);
+  border-radius: 28px;
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.7), 
+    0 15px 20px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover, .card.active {
+  border-color: rgba(255, 0, 122, 0.3);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.9), 
+    0 0 30px rgba(255, 0, 122, 0.15), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.avatar-section {
+  position: relative;
+  height: 180px;
+  width: 100%;
+  margin-bottom: 1rem;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.goo-layer {
+  position: absolute;
+  inset: -60px;
+  -webkit-filter: url("#goo");
+  filter: url("#goo");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.goo-blob {
+  position: absolute;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.goo-main {
+  width: 116px;
+  height: 116px;
+  z-index: 2;
+}
+
+.goo-child {
+  width: 52px;
+  height: 52px;
+  z-index: 1;
+}
+
+.content-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.content-main {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--card-bg);
+  z-index: 4;
+  background: #fff;
+}
+
+.content-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-child {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card:hover .content-child,
+.card.active .content-child {
+  pointer-events: auto;
+}
+
+.content-child svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.card:hover .goo-1, .card.active .goo-1,
+.card:hover .content-1, .card.active .content-1 {
+  transform: translateY(-85px);
+  opacity: 1;
+}
+
+.card:hover .goo-2, .card.active .goo-2,
+.card:hover .content-2, .card.active .content-2 {
+  transform: translate(74px, -42px);
+  opacity: 1;
+}
+
+.card:hover .goo-3, .card.active .goo-3,
+.card:hover .content-3, .card.active .content-3 {
+  transform: translate(74px, 42px);
+  opacity: 1;
+}
+
+.card:hover .goo-4, .card.active .goo-4,
+.card:hover .content-4, .card.active .content-4 {
+  transform: translateY(85px);
+  opacity: 1;
+}
+
+.card:hover .goo-5, .card.active .goo-5,
+.card:hover .content-5, .card.active .content-5 {
+  transform: translate(-74px, 42px);
+  opacity: 1;
+}
+
+.card:hover .goo-6, .card.active .goo-6,
+.card:hover .content-6, .card.active .content-6 {
+  transform: translate(-74px, -42px);
+  opacity: 1;
+}
+
+.info {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.info h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.role {
+  display: inline-block;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 0.4rem;
+}
+
+.info p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 1.2rem 0 1.5rem;
+}
+
+.location {
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.location svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--primary);
+}
